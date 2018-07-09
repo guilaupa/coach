@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Notifications\UserRegisteredSuccessfully;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -50,8 +52,19 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'adresse' => 'required|string|max:255',
+            'ville' => 'required|string|max:255',
+            'code_postale' => '',
+            'telephone' => 'required|string|max:255',
+            'age' => 'required|string|max:255',
+            'sexe' => 'required|string|max:255',
+            'taille' => 'required|string|max:255',
+            'notification' => '',
             'password' => 'required|string|min:6|confirmed',
+            
+        
         ]);
     }
 
@@ -65,7 +78,16 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'prenom' => $data['prenom'],
             'email' => $data['email'],
+            'adresse' => $data['adresse'],
+            'ville' => $data['ville'],
+            'code_postale' => $data['code_postale'],
+            'telephone' => $data['telephone'],
+            'age' => $data['age'],
+            'sexe' => $data['sexe'],
+            'taille' => $data['taille'],
+            'notification' => $data['notification'],
             'password' => Hash::make($data['password']),
         ]);
     }

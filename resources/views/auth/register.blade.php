@@ -12,14 +12,14 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="nom" class="col-md-4 col-form-label text-md-right">{{ __('Nom') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nom" type="text" class="form-control{{ $errors->has('nom') ? ' is-invalid' : '' }}" name="nom" value="{{ old('nom') }}" required autofocus>
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
-                                @if ($errors->has('nom'))
+                                @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('nom') }}</strong>
+                                        <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -77,14 +77,14 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="code postale" class="col-md-4 col-form-label text-md-right">{{ __('Code postale') }}</label>
+                            <label for="code_postale" class="col-md-4 col-form-label text-md-right">{{ __('Code postale') }}</label>
 
                             <div class="col-md-6">
-                                <input id="code postale" type="text" class="form-control{{ $errors->has('code postale') ? ' is-invalid' : '' }}" name="code postale" value="{{ old('code postale') }}" required autofocus>
+                                <input id="code_postale" type="text" class="form-control{{ $errors->has('code_postale') ? ' is-invalid' : '' }}" name="code_postale" value="{{ old('code_postale') }}" required autofocus>
 
-                                @if ($errors->has('code postale'))
+                                @if ($errors->has('code_postale'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('code postale') }}</strong>
+                                        <strong>{{ $errors->first('code_postale') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -137,6 +137,18 @@
                                 @if ($errors->has('taille'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('taille') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="form-group row">
+                            <label for="notification" class="col-md-4 col-form-label text-md-right">{{ __('Notification') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="notification" type="text" class="form-control{{ $errors->has('notification') ? ' is-invalid' : '' }}" name="notification" value="{{ old('notification') }}" required autofocus>
+
+                                @if ($errors->has('notification'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('notification') }}</strong>
                                     </span>
                                 @endif
                             </div>

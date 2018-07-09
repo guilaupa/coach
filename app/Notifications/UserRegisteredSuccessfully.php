@@ -12,13 +12,20 @@ class UserRegisteredSuccessfully extends Notification
     use Queueable;
 
     /**
+     *
+     * @var user;
+     */
+    Protected $user
+
+    /**
      * Create a new notification instance.
      *
-     * @return void
+     * @param User $user
      */
+
     public function __construct()
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -41,9 +48,12 @@ class UserRegisteredSuccessfully extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->from(env('ADMIN_MAIL'))
+            ->subject('Successfully created new account')
+            ->greeting(sprintf('Hello %s', $user->name))
+            ->line('Inscription terminée . Maintenant vous pouvez activé votre compte pour profiter de nos services.')
+            ->action('Click Here', route('activate.user', $user->activation_code))
+            ->line('Thank you for using our application!');
     }
 
     /**
